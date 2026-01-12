@@ -1,0 +1,28 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Dispositivos</title>
+</head>
+<body>
+  <h1>Dispositivos</h1>
+  <form action="/devices/add" method="post">
+    <label>Nombre del dispositivo: <input name="nombre" /></label>
+    <button type="submit">Crear dispositivo</button>
+  </form>
+
+  <h2>Mis dispositivos</h2>
+  <table border="1">
+    <tr><th>ID</th><th>Nombre</th><th>API Key</th></tr>
+    {% for d in dispositivos %}
+    <tr>
+      <td>{{ d[0] }}</td>
+      <td>{{ d[1] }}</td>
+      <td>{{ d[2] }}</td>
+    </tr>
+    {% endfor %}
+  </table>
+
+  <p><a href="/dashboard">Volver al dashboard</a></p>
+</body>
+</html>

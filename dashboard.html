@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>PowerSense - Dashboard</title>
+
+    <!-- 🔴 ESTA LÍNEA ES LA CLAVE -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<header class="header">
+    ⚡ <span>PowerSense</span>
+    <p>Monitoreo de Consumo Energético</p>
+</header>
+
+<main class="container">
+
+    <section class="card">
+        <h2>Bienvenido</h2>
+        <p class="user">{{ nombre }}</p>
+    </section>
+
+    <section class="card">
+        <h2>Consumo actual</h2>
+        <p class="consumo">{{ consumo }} W</p>
+
+        <form method="post" action="/actualizar_consumo">
+            <button class="btn">Actualizar consumo</button>
+        </form>
+    </section>
+
+    <section class="card">
+        <h2>Historial de consumo</h2>
+        <ul>
+            {% for c in historial %}
+                <li>{{ c[0] }} W - {{ c[1] }}</li>
+            {% endfor %}
+        </ul>
+    </section>
+
+    <a href="/logout" class="logout">Cerrar sesión</a>
+
+</main>
+
+<footer>
+    PowerSense © 2026 - Sistema de Información
+</footer>
+
+</body>
+</html>
